@@ -13,7 +13,7 @@ export const registerContact = functions.region("australia-southeast1")
       const transferTokenGenerator = initializeTransferTokenGenerator();
       const contactService = new ContactService(functions.config().dt.baseurl, transferTokenGenerator.getTransferToken());
       const contact = data as Contact;
-      return contactService.createContact(contact);
+      return contactService.createContact(contact, functions.config().dt.defaultassignment);
     });
 
 function verifyCallingApp(context: CallableContext) {

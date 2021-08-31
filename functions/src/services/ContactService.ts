@@ -9,7 +9,7 @@ export class ContactService {
                 public readonly transferToken: string) {
     }
 
-    async createContact(contact: Contact): Promise<void> {
+    async createContact(contact: Contact, assignedTo: string): Promise<void> {
       try {
         await axios
             .post(`${this.baseUrl}${this.contactsPath}`,
@@ -17,7 +17,13 @@ export class ContactService {
                   "name": contact.name,
                   "age": contact.age,
                   "type": "access",
-                  "assigned_to": functions.config().dt.defaultassignment,
+                  "assigned_to": assignedTo,
+                  "nt_postman_keyselect": "needs_nt",
+                  "contact_address": {
+                    "values": [
+                      {"value": contact.address},
+                    ],
+                  },
                   "sources": {
                     "values": [
                       {"value": contact.source},
