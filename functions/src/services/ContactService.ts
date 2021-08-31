@@ -14,7 +14,15 @@ export class ContactService {
         await axios
             .post(`${this.baseUrl}${this.contactsPath}`,
                 {
-                  "title": contact.name,
+                  "name": contact.name,
+                  "age": contact.age,
+                  "type": "access",
+                  "assigned_to": functions.config().dt.defaultassignment,
+                  "sources": {
+                    "values": [
+                      {"value": contact.source},
+                    ],
+                  },
                 },
                 {
                   headers: {"Authorization": `Bearer ${this.transferToken}`},
