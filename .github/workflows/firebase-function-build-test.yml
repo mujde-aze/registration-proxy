@@ -1,6 +1,8 @@
 name: Build firebase function
 
 on:
+  schedule:
+    - cron: '5 4 * * 4'
   push:
     branches: [ feature/**, master ]
 
