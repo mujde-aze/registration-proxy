@@ -12,7 +12,6 @@ export class RegistrationRequestTransformer {
       address: `${RegistrationRequestTransformer.transformToAddress(request)}`,
       age: `${request.age}`,
       source: request.source,
-      type: "access",
       name: `${request.givenName} ${request.surname}`,
     };
   }

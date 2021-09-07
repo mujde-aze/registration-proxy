@@ -3,6 +3,5 @@ export interface Contact {
     age: string;
     address: string;
     source: string;
-    type: string;
 }
 
