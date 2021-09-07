@@ -9,9 +9,9 @@ export class ContactService {
                 public readonly transferToken: string) {
     }
 
-    async createContact(contact: Contact, assignedTo: string): Promise<void> {
+    async createContact(contact: Contact, assignedTo: string): Promise<string> {
       try {
-        await axios
+        const {data} = await axios
             .post(`${this.baseUrl}${this.contactsPath}`,
                 {
                   "name": contact.name,
@@ -34,10 +34,10 @@ export class ContactService {
                   headers: {"Authorization": `Bearer ${this.transferToken}`},
                 }
             );
+        return data.ID;
       } catch (error) {
         throw new functions.https.HttpsError("internal",
-            `Problem creating contact with name ${contact.name}`,
-            error);
+            `Problem creating contact with name ${contact.name}: ${error}`);
       }
     }
 }
