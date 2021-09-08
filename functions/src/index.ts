@@ -3,7 +3,7 @@ import * as functions from "firebase-functions";
 // import * as dayjs from "dayjs";
 import {CallableContext} from "firebase-functions/lib/common/providers/https";
 // import {ContactService} from "./services/ContactService";
-import {CaptchaVerificationService} from "./services/CaptchaVerificationService";
+// import {CaptchaVerificationService} from "./services/CaptchaVerificationService";
 import {RegistrationRequestTransformer} from "./services/RegistrationRequestTransformer";
 import {RegistrationRequest} from "./models/RegistrationRequest";
 
@@ -31,20 +31,20 @@ async function verifyCallingApp(context: CallableContext, data: RequestData) {
     );
   }
 
-  if (data.captchaToken == undefined || data.registrationRequest == undefined) {
+  if (data.registrationRequest == undefined) {
     throw new functions.https.HttpsError(
         "failed-precondition",
-        "That's odd, there should be a captcha token as well as registration data."
+        "That's odd, there should be registration data."
     );
   }
 
-  const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
+  /* const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
   if (!await captchaService.isRequestVerified(data.captchaToken)) {
     throw new functions.https.HttpsError(
         "failed-precondition",
         "Captcha verification failed, you might be a robot."
     );
-  }
+  }*/
 }
 
 /* function initializeTransferTokenGenerator(): TransferTokenGenerator {
