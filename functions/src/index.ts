@@ -3,7 +3,7 @@ import * as functions from "firebase-functions";
 // import * as dayjs from "dayjs";
 import {CallableContext} from "firebase-functions/lib/common/providers/https";
 // import {ContactService} from "./services/ContactService";
-// import {CaptchaVerificationService} from "./services/CaptchaVerificationService";
+import {CaptchaVerificationService} from "./services/CaptchaVerificationService";
 import {RegistrationRequestTransformer} from "./services/RegistrationRequestTransformer";
 import {RegistrationRequest} from "./models/RegistrationRequest";
 
@@ -38,13 +38,13 @@ async function verifyCallingApp(context: CallableContext, data: RequestData) {
     );
   }
 
-  /* const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
-  if (!await captchaService.isRequestVerified(data.captchaToken)) {
+  const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
+  if (!await captchaService.isRequestVerified(context.rawRequest.header("X-Firebase-AppCheck"))) {
     throw new functions.https.HttpsError(
         "failed-precondition",
         "Captcha verification failed, you might be a robot."
     );
-  }*/
+  }
 }
 
 /* function initializeTransferTokenGenerator(): TransferTokenGenerator {

@@ -8,10 +8,12 @@ export class CaptchaVerificationService {
   constructor(public readonly secret: string) {
   }
 
-  async isRequestVerified(token: string): Promise<boolean> {
-    const response = await this.verifyToken(token);
-    if (response.success) {
-      return response.score > CAPTCHA_THRESHOLD;
+  async isRequestVerified(token: string | undefined): Promise<boolean> {
+    if (token) {
+      const response = await this.verifyToken(token);
+      if (response.success) {
+        return response.score > CAPTCHA_THRESHOLD;
+      }
     }
 
     return false;
