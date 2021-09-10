@@ -38,9 +38,6 @@ async function verifyCallingApp(context: CallableContext, data: RequestData) {
     );
   }
 
-  functions.logger.info(`All claims ${JSON.stringify(context.app.token)}`);
-  functions.logger.info(`Is this the score: ${context.app.token["score"]}`);
-
   const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
   if (!await captchaService.isRequestVerified(context.app.appId)) {
     throw new functions.https.HttpsError(

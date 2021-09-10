@@ -17,10 +17,10 @@ export class RegistrationRequestTransformer {
   }
 
   private static transformToAddress(request: RegistrationRequest): string {
-    if (request.area !== "") {
-      return `${request.street}, ${request.area}, ${request.city}, ${request.country}`;
+    if (request.cityVillage !== "") {
+      return `${request.street}, ${request.cityVillage}, ${request.province}, ${request.country}`;
     } else {
-      return `${request.street}, ${request.city}, ${request.country}`;
+      return `${request.street}, ${request.province}, ${request.country}`;
     }
   }
 }
