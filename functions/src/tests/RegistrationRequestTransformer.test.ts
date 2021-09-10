@@ -5,9 +5,9 @@ import {HttpsError} from "firebase-functions/lib/providers/https";
 describe("The RegistrationRequestTransformer's transformToContact function", () => {
   it("Should throw an error if a required field is empty", () => {
     const request: RegistrationRequest = {
-      ageConfirmation: "", area: "", flatNumber: "", street: "",
+      ageConfirmation: "", cityVillage: "", flatNumber: "", street: "",
       givenName: "Robert", surname: "Marley", age: "20-30",
-      country: "Australia", city: "", source: "google",
+      country: "Australia", province: "", source: "google",
     };
 
     expect(() => {
@@ -15,11 +15,11 @@ describe("The RegistrationRequestTransformer's transformToContact function", () 
     }).toThrowError(HttpsError);
   });
 
-  it("Should return a valid contact with a properly formatted address if area is empty", () => {
+  it("Should return a valid contact with a properly formatted address if cityVillage is empty", () => {
     const request: RegistrationRequest = {
-      ageConfirmation: "", area: "", flatNumber: "", street: "56 Hope Road",
+      ageConfirmation: "", cityVillage: "", flatNumber: "", street: "56 Hope Road",
       givenName: "Robert", surname: "Marley", age: "20-30",
-      country: "Jamaica", city: "Kingston", source: "google",
+      country: "Jamaica", province: "Kingston", source: "google",
     };
 
     const contact = RegistrationRequestTransformer.transformToContact(request);
@@ -29,11 +29,11 @@ describe("The RegistrationRequestTransformer's transformToContact function", () 
     expect(contact.address).toBe("56 Hope Road, Kingston, Jamaica");
   });
 
-  it("Should return a valid contact with a properly formatted address if area is provided", () => {
+  it("Should return a valid contact with a properly formatted address if cityVillage is provided", () => {
     const request: RegistrationRequest = {
-      ageConfirmation: "", area: "St Andrew", flatNumber: "", street: "56 Hope Road",
+      ageConfirmation: "", cityVillage: "St Andrew", flatNumber: "", street: "56 Hope Road",
       givenName: "Robert", surname: "Marley", age: "20-30",
-      country: "Jamaica", city: "Kingston", source: "google",
+      country: "Jamaica", province: "Kingston", source: "google",
     };
 
     const contact = RegistrationRequestTransformer.transformToContact(request);
