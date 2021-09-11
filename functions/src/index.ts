@@ -31,15 +31,15 @@ async function verifyCallingApp(context: CallableContext, data: RequestData) {
     );
   }
 
-  if (data.registrationRequest == undefined) {
+  if (data.registrationRequest == undefined || data.recaptchaToken == undefined) {
     throw new functions.https.HttpsError(
         "failed-precondition",
-        "That's odd, there should be registration data."
+        "That's odd, there should be registration data and a captcha token."
     );
   }
 
   const captchaService = new CaptchaVerificationService(functions.config().captcha.secret);
-  if (!await captchaService.isRequestVerified(context.app.appId)) {
+  if (!await captchaService.isRequestVerified(data.recaptchaToken)) {
     throw new functions.https.HttpsError(
         "failed-precondition",
         "Captcha verification failed, you might be a robot."
@@ -53,6 +53,6 @@ async function verifyCallingApp(context: CallableContext, data: RequestData) {
 }*/
 
 interface RequestData {
-    captchaToken: string,
+    recaptchaToken: string,
     registrationRequest: RegistrationRequest
 }
