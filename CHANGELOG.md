@@ -12,13 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2] - 2021-09-10
 
 ### Changed
-- Commented out mutation logic until frontend is ready
-- Updated registration request names to match client
+- Commented out mutation logic until frontend is ready.
+- Updated registration request names to match client.
 
 ## [1.0.0] - 2021-09-07
 
 ### Added
-- Initial release
+- Initial release.
 
 [1.0.3]: https://github.com/mujde-aze/registration-proxy/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/mujde-aze/registration-proxy/compare/v1.0.0...v1.0.2
