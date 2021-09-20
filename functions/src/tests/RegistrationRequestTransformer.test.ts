@@ -5,6 +5,7 @@ import {HttpsError} from "firebase-functions/lib/providers/https";
 describe("The RegistrationRequestTransformer's transformToContact function", () => {
   it("Should throw an error if a required field is empty", () => {
     const request: RegistrationRequest = {
+      phoneNumber: "", streetNumber: "",
       ageConfirmation: "", cityVillage: "", flatNumber: "", street: "",
       givenName: "Robert", surname: "Marley", age: "20-30",
       country: "Australia", province: "", source: "google",
@@ -17,6 +18,7 @@ describe("The RegistrationRequestTransformer's transformToContact function", () 
 
   it("Should return a valid contact with a properly formatted address if cityVillage is empty", () => {
     const request: RegistrationRequest = {
+      phoneNumber: "", streetNumber: "",
       ageConfirmation: "", cityVillage: "", flatNumber: "", street: "56 Hope Road",
       givenName: "Robert", surname: "Marley", age: "20-30",
       country: "Jamaica", province: "Kingston", source: "google",
@@ -31,6 +33,7 @@ describe("The RegistrationRequestTransformer's transformToContact function", () 
 
   it("Should return a valid contact with a properly formatted address if cityVillage is provided", () => {
     const request: RegistrationRequest = {
+      phoneNumber: "", streetNumber: "",
       ageConfirmation: "", cityVillage: "St Andrew", flatNumber: "", street: "56 Hope Road",
       givenName: "Robert", surname: "Marley", age: "20-30",
       country: "Jamaica", province: "Kingston", source: "google",
