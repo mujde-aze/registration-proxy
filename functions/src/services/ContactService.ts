@@ -24,6 +24,11 @@ export class ContactService {
                       {"value": contact.address},
                     ],
                   },
+                  "contact_phone": {
+                    "values": [
+                      {"value": contact.phone},
+                    ],
+                  },
                   "sources": {
                     "values": [
                       {"value": contact.source},

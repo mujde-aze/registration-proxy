@@ -5,6 +5,8 @@ export interface RegistrationRequest {
     surname: string,
     age: string;
     street: string;
+    streetNumber: string;
+    phoneNumber: string;
     flatNumber: string;
     province: string;
     cityVillage: string;
@@ -14,7 +16,7 @@ export interface RegistrationRequest {
 }
 
 export function areRequiredFieldsPresent(request: RegistrationRequest): boolean {
-  const requiredFields = ["givenName", "surname", "age", "province", "country", "source"];
+  const requiredFields = ["givenName", "age", "province", "phoneNumber", "ageConfirmation", "source"];
 
   for (const [key, value] of Object.entries(request)) {
     if (requiredFields.includes(key) && value == "") {

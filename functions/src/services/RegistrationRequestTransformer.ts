@@ -13,14 +13,15 @@ export class RegistrationRequestTransformer {
       age: `${request.age}`,
       source: request.source,
       name: `${request.givenName} ${request.surname}`,
+      phone: request.phoneNumber,
     };
   }
 
   private static transformToAddress(request: RegistrationRequest): string {
     if (request.cityVillage !== "") {
-      return `${request.street}, ${request.cityVillage}, ${request.province}, ${request.country}`;
+      return `${request.streetNumber} ${request.street}, ${request.cityVillage}, ${request.province}, ${request.country}`;
     } else {
-      return `${request.street}, ${request.province}, ${request.country}`;
+      return `${request.streetNumber} ${request.street}, ${request.province}, ${request.country}`;
     }
   }
 }
