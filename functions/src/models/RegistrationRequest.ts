@@ -5,7 +5,6 @@ export interface RegistrationRequest {
     surname: string,
     age: string;
     street: string;
-    streetNumber: string;
     phoneNumber: string;
     flatNumber: string;
     province: string;

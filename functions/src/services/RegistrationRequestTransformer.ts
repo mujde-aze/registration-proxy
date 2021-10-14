@@ -18,12 +18,7 @@ export class RegistrationRequestTransformer {
   }
 
   private static transformToAddress(request: RegistrationRequest): string {
-    let street: string;
-    if (request.streetNumber !== "") {
-      street = `${request.streetNumber} ${request.street}`;
-    } else {
-      street = `${request.street}`;
-    }
+    const street = `${request.street}`;
 
     if (request.cityVillage !== "") {
       return `${street}, ${request.cityVillage}, ${request.province}, ${request.country}`;
