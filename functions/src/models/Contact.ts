@@ -6,3 +6,7 @@ export interface Contact {
     phone: string;
 }
 
+export interface DTCreateContactResponse {
+    ID: string;
+}
+
