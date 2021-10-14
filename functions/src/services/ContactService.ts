@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as functions from "firebase-functions";
-import {Contact} from "../models/Contact";
+import {Contact, DTCreateContactResponse} from "../models/Contact";
 
 export class ContactService {
   private contactsPath = "/wp-json/dt-posts/v2/contacts/";
@@ -12,7 +12,7 @@ export class ContactService {
   async createContact(contact: Contact, assignedTo: string): Promise<string> {
     try {
       const {data} = await axios
-          .post(`${this.baseUrl}${this.contactsPath}`,
+          .post<DTCreateContactResponse>(`${this.baseUrl}${this.contactsPath}`,
               {
                 "name": contact.name,
                 "age": contact.age,
