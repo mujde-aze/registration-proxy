@@ -13,7 +13,7 @@ export class RegistrationRequestTransformer {
       age: `${request.age}`,
       source: request.source,
       name: `${request.givenName} ${request.surname}`,
-      phone: request.phoneNumber,
+      phone: `${request.countryCode}-${request.phoneNumber}`,
     };
   }
 
