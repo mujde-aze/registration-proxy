@@ -18,7 +18,7 @@ export class ContactService {
                 "age": contact.age,
                 "type": "access",
                 "assigned_to": assignedTo,
-                "nt_postman_keyselect": "needs_nt",
+                // "nt_postman_keyselect": "needs_nt",
                 "contact_address": {
                   "values": [
                     {"value": contact.address},
